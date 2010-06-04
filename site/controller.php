@@ -42,6 +42,12 @@ class ContentController extends JController
 			
 			//"CREATE TABLE jos_forms_data ( id serial, name varchar(255), created int(10), data text )";
 			$mailto = trim( JRequest::getVar( 'mailto' ) );
+			$mailto_name = trim( JRequest::getVar( 'mailto_name' ) );
+			
+			if( $mailto && $mailto_name )
+			{
+				$mailto = "{$mailto_name} <{$mailto}>";
+			}
 			
 			if( !empty( $mailto ) )
 			{
@@ -55,8 +61,8 @@ class ContentController extends JController
 
 				// Send email to user
 				if ( ! $mailfrom  || ! $fromname ) {
-					$fromname = $rows[0]->name;
-					$mailfrom = $rows[0]->email;
+					$fromname = "Visbl Customer Services"; //$rows[0]->name;
+					$mailfrom = "support@visbl.com"; //$rows[0]->email;
 				}
 				
 				$subject = "Form {$form->name} submission.";
