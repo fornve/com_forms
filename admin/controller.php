@@ -21,28 +21,51 @@ jimport('joomla.application.component.controller');
  * Content Component Controller
  *
  * @package		Joomla
- * @subpackage	Content
+ * @subpackage	Forms
  * @since 1.5
  */
 class FormsController extends JController
 {
 	function Index()
 	{
-		$form_name = JRequest::getVar( 'form_name' ) ? urldecode( JRequest::getVar( 'form_name' ) ) : '';
+	/*	$form_name = JRequest::getVar( 'form_name' ) ? urldecode( JRequest::getVar( 'form_name' ) ) : '';
 		$delete = JRequest::getInt( 'delete' );
 		$delete = Forms_Data::Retrieve( $delete );
 		
 		if( $delete )
 		{
 			$delete->Delete();
-		}
+		}*/
 		
 		$view	= &$this->getView( 'index' );
-		$view->groups 	= Forms_Data::FormGroupsCollection();
-		$view->forms	= Forms_Data::FormGroupCollection( $form_name );
-		$view->selected_form = $form_name;
+	//	$view->groups 	= Forms_Data::FormGroupsCollection();
+	//	$view->forms	= Forms_Data::FormGroupCollection( $form_name );
+//		$view->selected_form = $form_name;
 		$view->Display();
 	}
+
+	function Edit_Form( $id = null )
+	{
+		if( $id )
+		{
+			$form = Form::retrieve( $id );
+		}
+
+		if( !$id || !$form )
+		{
+			$form = new Form();
+		}
+
+		$post = JRequest::get( 'post' );
+
+		if( $post )
+		{
+		}
+
+		$view = $this->getView( 'edit' );
+		$view->form = $form;
+		$view->display();
+	} 
 
 	function Form_Data()
 	{

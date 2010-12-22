@@ -1,4 +1,4 @@
-
+<a href="<?php echo JRoute::_( "index.php?option=com_forms&task=edit_form" ); ?>">New form</a>
 <h2>Groups</h2>
 <?php if( $this->groups ): ?>
 	<ul>

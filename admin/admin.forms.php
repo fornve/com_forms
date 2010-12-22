@@ -10,20 +10,13 @@ plgSystemDao::addClassPath( JPATH_COMPONENT . DS . 'entities/' );
 // Set the helper directory
 
 $controller = new FormsController();
-$task = JRequest::getCmd('task');
+$task = JRequest::getCmd( 'task' );
+$id = JRequest::getVar( 'post', 'id' );
 
 switch (strtolower($task))
 {
-	case( 'group' ):
-		$controller->Group();
-		break;
-		
-	case( 'group_csv' ):
-		$controller->Group_CSV();
-		break;
-		
-	case( 'all_csv' ):
-		$controller->All_CSV();
+	case( 'edit_form' ):
+		$controller->Edit_Form( $id );
 		break;
 		
 	case( 'form_data' ):
