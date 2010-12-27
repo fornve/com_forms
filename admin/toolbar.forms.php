@@ -7,11 +7,14 @@ $task = JRequest::getCmd( 'task' );
 switch ($task)
 {
 	case 'edit_form':
+	case 'apply_form':
 		TOOLBAR_forms::edit_form(false);
 		break;
+
 	case 'edit_field':
 		TOOLBAR_forms::edit_form_field(true);
 		break;
+
 	case 'copy':
 		TOOLBAR_forms::copy();
 		break;

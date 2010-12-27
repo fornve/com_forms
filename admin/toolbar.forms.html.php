@@ -15,8 +15,8 @@ class TOOLBAR_forms
 
 		JToolBarHelper::title( JText::_( 'Article' ).': <small><small>[ '. $text.' ]</small></small>', 'addedit.png' );
 		JToolBarHelper::preview( 'index.php?option=com_forms&id='.$cid.'&tmpl=component', true );
-		JToolBarHelper::save();
-		JToolBarHelper::apply();
+		JToolBarHelper::save( 'save_form' );
+		JToolBarHelper::apply( 'apply_form' );
 		if ( $edit ) {
 			// for existing articles the button is renamed `close`
 			JToolBarHelper::cancel( 'cancel', 'Close' );
@@ -57,7 +57,7 @@ class TOOLBAR_forms
 		JToolBarHelper::customX( 'copy', 'copy.png', 'copy_f2.png', 'Copy' );
 		JToolBarHelper::trash();
 		JToolBarHelper::editListX();
-		JToolBarHelper::addNewX();
+		JToolBarHelper::addNewX( 'edit_form' );
 		JToolBarHelper::preferences('com_forms', '550');
 		JToolBarHelper::help( 'screen.forms' );
 	}

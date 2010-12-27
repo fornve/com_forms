@@ -3,7 +3,7 @@
 class Form extends Entity
 {
 	protected $table_name = '#__form';
-	protected $schema = array( 'id', 'name' );
+	protected $schema = array( 'id', 'name', 'description' );
 	
 	public static function retrieve( $id )
 	{
@@ -14,7 +14,7 @@ class Form extends Entity
 			return false;
 		}
 
-		$object->fields = Field::formCollection( $object->id );
+		$object->fields = Form_Field::formCollection( $object->id );
 		
 		return $object;
 	}
@@ -28,5 +28,12 @@ class Form extends Entity
 				$field->data = $field_data;
 			}
 		}
+	} 
+
+	public static function getAll()
+	{
+		$entity = new Entity();
+		$query = "SELECT * FROM #__form ORDER BY id ASC";
+		return $entity->collection( $query, null, __CLASS__ );
 	} 
 }

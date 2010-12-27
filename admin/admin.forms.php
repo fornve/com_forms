@@ -11,14 +11,21 @@ plgSystemDao::addClassPath( JPATH_COMPONENT . DS . 'entities/' );
 
 $controller = new FormsController();
 $task = JRequest::getCmd( 'task' );
-$id = JRequest::getVar( 'post', 'id' );
+$args = JRequest::get( null, 'id' );
+$id = $args[ 'id' ];
 
 switch (strtolower($task))
 {
 	case( 'edit_form' ):
+	case( 'save_form' ):
+	case( 'apply_form' ):
 		$controller->Edit_Form( $id );
 		break;
-		
+			
+	case( 'delete_form' ):
+		$controller->Delete_Form( $id );
+		break;
+	
 	case( 'form_data' ):
 		$controller->Form_Data();
 		break;

@@ -28,7 +28,7 @@ function com_install()
 	{
 		$database = JFactory::getDBO();
 
-		$database->setQuery( "CREATE TABLE #__form ( id serial, name varchar(255) )" );
+		$database->setQuery( "CREATE TABLE #__form ( id serial, name varchar(255), description text )" );
 		$database->Query();
 
 		$database->setQuery( "CREATE TABLE #__form_field ( id serial, form int(10), name varchar(255), type varchar(10), length int(10), sort_order int(10) )" );

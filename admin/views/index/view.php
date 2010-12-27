@@ -26,12 +26,16 @@ jimport('joomla.application.component.view');
  */
 class formsViewIndex extends JView
 {
-	function Index( $tmpl = 'default' )
+	function display()
 	{
+		$forms = Form::getAll();
+
 		$this->assign( 'selected_form', JRequest::getVar( 'form_name' ) );
 		$this->assign( 'groups',	$this->groups );
-		$this->assign( 'forms',		$this->forms );
+		$this->assign( 'forms',		$forms );
 		$this->assign( 'selected_form', $this->selected_form );
-		parent::display( $tmpl );
+		//$this->assign( 'pagination',  );
+
+		parent::display();
 	}
 }

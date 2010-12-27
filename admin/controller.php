@@ -26,7 +26,7 @@ jimport('joomla.application.component.controller');
  */
 class FormsController extends JController
 {
-	function Index()
+	public function Index()
 	{
 	/*	$form_name = JRequest::getVar( 'form_name' ) ? urldecode( JRequest::getVar( 'form_name' ) ) : '';
 		$delete = JRequest::getInt( 'delete' );
@@ -44,8 +44,13 @@ class FormsController extends JController
 		$view->Display();
 	}
 
-	function Edit_Form( $id = null )
+	public function Edit_Form( $id = null )
 	{
+		global $mainframe;
+
+		$post = JRequest::get( 'post' );
+		$task = JRequest::getCmd( 'task' );
+
 		if( $id )
 		{
 			$form = Form::retrieve( $id );
@@ -56,10 +61,16 @@ class FormsController extends JController
 			$form = new Form();
 		}
 
-		$post = JRequest::get( 'post' );
-
-		if( $post )
+		if( $post && $task == 'save_form' || $task == 'apply_form' )
 		{
+			$form->name = $post[ 'name' ];
+			$form->description = strip_tags( $post['description'], '<a>' );
+			$form->save();
+		}
+
+		if( $task == 'save_form' )
+		{
+			$mainframe->redirect('index.php?option=com_forms' );
 		}
 
 		$view = $this->getView( 'edit' );
@@ -67,9 +78,23 @@ class FormsController extends JController
 		$view->display();
 	} 
 
+	public function Delete_Form( $id = null )
+	{
+		global $mainframe;
+
+		$form = Form::retrieve( $id );	
+
+		if( $form->id > 0 )
+		{
+			$form->delete();
+		}
+
+		$mainframe->redirect('index.php?option=com_forms' );
+	} 
+
 	function Form_Data()
 	{
-		$form = Forms_Data::Retrieve( JRequest::getInt( 'id' ) );
+		$form = Form::Retrieve( JRequest::getInt( 'id' ) );
 		
 		$view	= &$this->getView( 'index' );
 		$view->form = $form;

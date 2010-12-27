@@ -18,8 +18,9 @@
 	<installfile>install.php</installfile>
 	<uninstallfile>uninstall.php</uninstallfile>
 	<administration>
-		<menu link="option=com_forms">Forms</menu>
+		<menu linsddasdk="option=com_forms">Forms</menu>
 		<menu link="option=com_forms&amp;action=edit">New form</menu>
+		<language>language/en-GB.com_forms.ini</language>
 		<files folder="admin">
 			<filename>admin.forms.php</filename>
 			<filename>controller.php</filename>
