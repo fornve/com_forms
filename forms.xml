@@ -10,23 +10,28 @@
 	<license>GPL v3</license>
 	<version>0.0.0</version>
 	<description>Form Generator</description>
+	<installfile>install.php</installfile>
+	<uninstallfile>uninstall.php</uninstallfile>
 	<files folder="site">
 		<filename>controller.php</filename>
 		<filename>forms.php</filename>
 		<filename>entities/form.class.php</filename>
 	</files>
-	<installfile>install.php</installfile>
-	<uninstallfile>uninstall.php</uninstallfile>
 	<administration>
-		<menu linsddasdk="option=com_forms">Forms</menu>
-		<menu link="option=com_forms&amp;action=edit">New form</menu>
-		<language>language/en-GB.com_forms.ini</language>
+		<menu link="option=com_forms">Forms</menu>
+		<submenu>
+			<menu link="option=com_forms&amp;action=edit">New form</menu>
+		</submenu>
 		<files folder="admin">
 			<filename>admin.forms.php</filename>
 			<filename>controller.php</filename>
+			<filename>toolbar.forms.php</filename>
+			<filename>toolbar.forms.html.php</filename>
+			<filename>assets/forms.js</filename>
 			<filename>views/index/view.php</filename>
 			<filename>views/index/tmpl/default.php</filename>
-			<filename>views/index/tmpl/default_form.php</filename>
+			<filename>views/edit/view.php</filename>
+			<filename>views/edit/tmpl/default.php</filename>
 			<filename>entities/form.class.php</filename>
 			<filename>entities/form_data.class.php</filename>
 			<filename>entities/form_field.class.php</filename>
@@ -34,5 +39,8 @@
 			<filename>entities/form_option.class.php</filename>
 			<filename>entities/form_validation.class.php</filename>
 		</files>
+		<languages>
+			<language tag="en-GB">admin/language/en-GB.com_forms.ini</language>
+		</languages>
 	</administration>
 </install>
