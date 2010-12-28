@@ -1,9 +1,9 @@
 <?php
 
-class Form_Field extends Form
+class Form_Field extends Entity
 {
 	protected $table_name = "#__form_field";
-	protected $schema = array( 'id', 'form', 'name', 'type', 'length', 'sort_order' );
+	protected $schema = array( 'id', 'form', 'name', 'type', 'length', 'description', 'sort_order' );
 
 	/*
 	 * Data assigned
@@ -19,8 +19,9 @@ class Form_Field extends Form
 			return null;
 		}
 
-		$object->validations = Field_Validation::fieldCollection( $object->id );
-		$object->options = Field_Options::fieldCollection( $object->id );
+		// WARNING: enable one by one
+		//$object->validations = Field_Validation::fieldCollection( $object->id );
+		//$object->options = Field_Option::fieldCollection( $object->id );
 
 		return $object;
 	} 
@@ -37,6 +38,8 @@ class Form_Field extends Form
 		{
 			$fields[ $item->sort_order ] = self::retrieve( $item->id );
 		}
+
+		ksort( $fields );
 
 		return $fields;
 	} 

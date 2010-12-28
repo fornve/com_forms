@@ -51,6 +51,8 @@ class FormsController extends JController
 		$post = JRequest::get( 'post' );
 		$task = JRequest::getCmd( 'task' );
 
+		$id = $id ? $id : $post[ 'id' ];
+
 		if( $id )
 		{
 			$form = Form::retrieve( $id );
@@ -64,7 +66,7 @@ class FormsController extends JController
 		if( $post && $task == 'save_form' || $task == 'apply_form' )
 		{
 			$form->name = $post[ 'name' ];
-			$form->description = strip_tags( $post['description'], '<a>' );
+			$form->description = strip_tags( $post[ 'description' ], '<a>' );
 			$form->save();
 		}
 
@@ -86,6 +88,8 @@ class FormsController extends JController
 		$get = JRequest::get( 'get' );
 		$task = JRequest::getCmd( 'task' );
 
+		$id = $id ? $id : $post[ 'id' ];
+
 		if( $id )
 		{
 			$field = Form_Field::retrieve( $id );
@@ -103,7 +107,7 @@ class FormsController extends JController
 			$field->name = $post[ 'name' ];
 			$field->type = $post[ 'type' ];
 			$field->length = $post[ 'length' ];
-			$field->description = $post[ 'description' ];
+			$field->description = strip_tags( $post[ 'description' ], '<a>' );
 			$field->save();
 		}
 
@@ -122,13 +126,14 @@ class FormsController extends JController
 		global $mainframe;
 
 		$field = Form_Field::retrieve( $id );	
+		$form = $field->form;
 
 		if( $field->id > 0 )
 		{
 			$field->delete();
 		}
 
-		$mainframe->redirect( 'index.php?option=com_forms'. $field->form->id );
+		$mainframe->redirect( 'index.php?option=com_forms&task=edit_form&id='. $form );
 	} 
 
 
