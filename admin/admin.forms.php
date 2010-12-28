@@ -25,6 +25,16 @@ switch (strtolower($task))
 	case( 'delete_form' ):
 		$controller->Delete_Form( $id );
 		break;
+
+	case( 'edit_field' ):
+	case( 'save_field' ):
+	case( 'apply_field' ):
+		$controller->Edit_Field( $id );
+		break;
+			
+	case( 'delete_field' ):
+		$controller->Delete_Field( $id );
+		break;
 	
 	case( 'form_data' ):
 		$controller->Form_Data();

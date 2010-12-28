@@ -11,9 +11,9 @@ class TOOLBAR_forms
 		$cid = JRequest::getVar( 'cid', array(0), '', 'array' );
 		$cid = intval($cid[0]);
 
-		$text = ( $edit ? JText::_( 'Edit' ) : JText::_( 'New' ) );
+		$text = ( $edit ? JText::_( 'EDIT' ) : JText::_( 'NEW' ) );
 
-		JToolBarHelper::title( JText::_( 'Article' ).': <small><small>[ '. $text.' ]</small></small>', 'addedit.png' );
+		JToolBarHelper::title( JText::_( 'Form' ).': <small><small>[ '. $text.' ]</small></small>', 'addedit.png' );
 		JToolBarHelper::preview( 'index.php?option=com_forms&id='.$cid.'&tmpl=component', true );
 		JToolBarHelper::save( 'save_form' );
 		JToolBarHelper::apply( 'apply_form' );
@@ -26,11 +26,13 @@ class TOOLBAR_forms
 		JToolBarHelper::help( 'screen.forms.edit_form' );
 	}
 
-	function edit_form_field()
+	function edit_field()
 	{
-		JToolBarHelper::save();
+		JToolBarHelper::title( JText::_( 'Form field' ), 'addedit.png' );
+		JToolBarHelper::apply( 'apply_field' );
+		JToolBarHelper::save( 'save_field' );
 		JToolBarHelper::cancel();
-		JToolBarHelper::help( 'screen.forms.edit_form_field' );
+		JToolBarHelper::help( 'screen.forms.edit_field' );
 	} 
 
 	function copy()

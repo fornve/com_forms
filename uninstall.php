@@ -10,10 +10,10 @@ function com_uninstall()
 	$database->setQuery( "DROP TABLE #__form_field" );
 	$database->Query();
 
-	$database->setQuery( "DROP TABLE #__form_option" );
+	$database->setQuery( "DROP TABLE #__field_option" );
 	$database->Query();
 
-	$database->setQuery( "DROP TABLE #__form_validation" );
+	$database->setQuery( "DROP TABLE #__field_validation" );
 	$database->Query();
 
 	$database->setQuery( "DROP TABLE #__form_data" );

@@ -2,7 +2,7 @@
 
 class Field_Validation extends Entity
 {
-	protected $table_name = "#__form_validation";
+	protected $table_name = "#__field_validation";
 	protected $schema = array( 'id', 'field', 'type', 'vars' );
 
 	public static function retrieve( $id )
@@ -13,7 +13,7 @@ class Field_Validation extends Entity
 	public static function fieldCollection( $field_id )
 	{
 		$entity = new Entity();
-		$query = "SELECT * FROM #__form_validation WHERE field = ?";
+		$query = "SELECT * FROM #__field_validation WHERE field = ?";
 
 		return $entity->collection( $query, $field_id, __CLASS__ );	
 	} 

@@ -75,8 +75,62 @@ class FormsController extends JController
 
 		$view = $this->getView( 'edit' );
 		$view->form = $form;
-		$view->display();
+		$view->form();
 	} 
+
+	public function Edit_Field( $id = null )
+	{
+		global $mainframe;
+
+		$post = JRequest::get( 'post' );
+		$get = JRequest::get( 'get' );
+		$task = JRequest::getCmd( 'task' );
+
+		if( $id )
+		{
+			$field = Form_Field::retrieve( $id );
+		}
+
+		if( !$id || !$field )
+		{
+			$field = new Form_Field();
+			$field->form = $get[ 'form_id' ];
+		}
+
+		if( $post && $task == 'save_field' || $task == 'apply_field' )
+		{
+			$field->form = $post[ 'form_id' ];
+			$field->name = $post[ 'name' ];
+			$field->type = $post[ 'type' ];
+			$field->length = $post[ 'length' ];
+			$field->description = $post[ 'description' ];
+			$field->save();
+		}
+
+		if( $task == 'save_field' )
+		{
+			$mainframe->redirect('index.php?option=com_forms&task=edit_form&id='. $field->form );
+		}
+
+		$view = $this->getView( 'edit' );
+		$view->field = $field;
+		$view->field();
+	} 
+
+	public function Delete_Field( $id = null )
+	{
+		global $mainframe;
+
+		$field = Form_Field::retrieve( $id );	
+
+		if( $field->id > 0 )
+		{
+			$field->delete();
+		}
+
+		$mainframe->redirect( 'index.php?option=com_forms'. $field->form->id );
+	} 
+
 
 	public function Delete_Form( $id = null )
 	{

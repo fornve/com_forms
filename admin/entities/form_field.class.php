@@ -19,8 +19,8 @@ class Form_Field extends Form
 			return null;
 		}
 
-		$object->validations = Form_Validation::fieldCollection( $object->id );
-		$object->options = Form_Options::fieldCollection( $object->id );
+		$object->validations = Field_Validation::fieldCollection( $object->id );
+		$object->options = Field_Options::fieldCollection( $object->id );
 
 		return $object;
 	} 

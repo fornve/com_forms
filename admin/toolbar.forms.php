@@ -12,7 +12,8 @@ switch ($task)
 		break;
 
 	case 'edit_field':
-		TOOLBAR_forms::edit_form_field(true);
+	case 'apply_field':
+		TOOLBAR_forms::edit_field();
 		break;
 
 	case 'copy':

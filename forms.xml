@@ -31,13 +31,14 @@
 			<filename>views/index/view.php</filename>
 			<filename>views/index/tmpl/default.php</filename>
 			<filename>views/edit/view.php</filename>
-			<filename>views/edit/tmpl/default.php</filename>
+			<filename>views/edit/tmpl/form.php</filename>
+			<filename>views/edit/tmpl/field.php</filename>
 			<filename>entities/form.class.php</filename>
 			<filename>entities/form_data.class.php</filename>
 			<filename>entities/form_field.class.php</filename>
 			<filename>entities/form_field_data.class.php</filename>
-			<filename>entities/form_option.class.php</filename>
-			<filename>entities/form_validation.class.php</filename>
+			<filename>entities/field_option.class.php</filename>
+			<filename>entities/field_validation.class.php</filename>
 		</files>
 		<languages>
 			<language tag="en-GB">admin/language/en-GB.com_forms.ini</language>

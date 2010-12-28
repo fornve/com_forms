@@ -1,13 +1,7 @@
 <h2>Forms</h2>
 
-<?php if( $this->forms ): ?>
-	<?php 
-
-		//Ordering allowed ?
-//		$ordering = ($lists['order'] == 'section_name' || $lists['order'] == 'cc.title' || $lists['order'] == 'c.ordering');
-//		JHTML::_('behavior.tooltip');
-		?>
-		<form action="index.php?option=com_forms" method="post" name="adminForm">
+<form action="index.php?option=com_forms" method="post" name="adminForm">
+	<?php if( $this->forms ): ?>
 
 			<table class="adminlist" cellspacing="1">
 				<thead>
@@ -50,11 +44,12 @@
 				</tbody>
 			</table>
 
-			<input type="hidden" name="option" value="com_forms" />
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="boxchecked" value="0" />
-			<input type="hidden" name="redirect" value="<?php echo $redirect;?>" />
-			<?php echo JHTML::_( 'form.token' ); ?>
-		</form>
+	<?php endif; ?>
 
-<?php endif; ?>
+	<input type="hidden" name="option" value="com_forms" />
+	<input type="hidden" name="task" value="" />
+	<input type="hidden" name="boxchecked" value="0" />
+	<input type="hidden" name="redirect" value="<?php echo $redirect;?>" />
+	<?php echo JHTML::_( 'form.token' ); ?>
+</form>
+
